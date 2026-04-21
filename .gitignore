@@ -3,4 +3,6 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 data/
+outputs/
+logs/
 .idea/

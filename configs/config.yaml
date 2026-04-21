@@ -1,0 +1,8 @@
+images_dir: "data/raw/imgs1_w/imgs1"
+labels_path: "data/raw/imgs1_w/imgs1_text_recog.csv"
+alphabet: " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+batch_size: 32
+lr: 0.001
+epochs: 10
+img_height: 32
+img_width: 128
