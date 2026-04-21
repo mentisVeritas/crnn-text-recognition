@@ -27,7 +27,7 @@ class OCRDataset(Dataset):
         df = df.dropna(subset=["image_name", "utf8string"])
         df = df[df["utf8string"].notna()]  # double check
 
-        logging.info(f"Dataset loaded with {len(df)} samples (NaN filtered)")
+        logger.info("Dataset loaded with %s samples (NaN filtered)", len(df))
 
         self.filenames = df["image_name"].values
         self.texts = df["utf8string"].values

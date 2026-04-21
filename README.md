@@ -89,7 +89,7 @@ python scripts/predict.py --image path/to/image.png
 Основной интерактивный сценарий: `notebooks/experiments.ipynb`.
 
 В ноутбуке оставлен orchestration (запуск шагов, сравнение, визуальный контроль), а переиспользуемая логика вынесена в `src/`:
-- `src/notebook_runner.py` — полный пайплайн для `experiments.ipynb` (dataloaders, train loop, визуализация, лог)
+- `src/train.py` — обучение (resume, чекпоинты), визуализация и лог экспериментов для ноутбука и `scripts/train.py`
 - `src/inference.py` — preprocessing + предсказание с confidence
 - `src/metrics.py` — Levenshtein, Accuracy/CER/WER
 - `src/visualization.py` — общий рендер prediction grid
@@ -112,13 +112,12 @@ crnn-text-recognition/
 ├── src/                  # исходный код
 │   ├── data.py           # датасет OCR (CSV + изображения)
 │   ├── model.py          # модель CRNN
-│   ├── train.py          # цикл обучения (CTC)
 │   ├── decode.py         # жадное декодирование CTC
 │   ├── inference.py      # инференс + confidence
 │   ├── metrics.py        # Accuracy/CER/WER + edit distance
 │   ├── visualization.py  # визуализация предсказаний
 │   ├── experiment_log.py # лог/leaderboard экспериментов
-│   ├── notebook_runner.py # логика ноутбука experiments (train / eval / viz)
+│   ├── train.py          # обучение + хелперы для experiments.ipynb
 │   └── utils.py          # конфиг и устройство
 ├── requirements.txt      # зависимости
 └── README.md             # этот файл

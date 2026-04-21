@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from src.model import CRNN
 from src.inference import preprocess_image, decode_with_confidence
-from src.utils import load_config
+from src.utils import load_config, get_device
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ def main():
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     config_path = os.path.join(project_root, "configs/config.yaml")
     config = load_config(config_path)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = get_device()
 
     num_classes = len(config["alphabet"]) + 1
     checkpoint_path = os.path.join(project_root, "outputs/checkpoints/best_model.pth")
