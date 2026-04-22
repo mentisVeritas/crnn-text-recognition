@@ -4,21 +4,14 @@ from pathlib import Path
 from typing import Tuple
 
 import torch
-import torchvision.transforms as T
 from PIL import Image
 
-from src.decode import greedy_decode
+from src.data import build_image_transform
+from src.text_codec import greedy_decode
 
 
 def preprocess_image(image_path: str | Path, img_height: int, img_width: int) -> torch.Tensor:
-    transform = T.Compose(
-        [
-            T.Grayscale(num_output_channels=1),
-            T.Resize((img_height, img_width)),
-            T.ToTensor(),
-            T.Normalize(mean=[0.5], std=[0.5]),
-        ]
-    )
+    transform = build_image_transform(img_height, img_width)
     image = Image.open(image_path).convert("RGB")
     return transform(image).unsqueeze(0)
 

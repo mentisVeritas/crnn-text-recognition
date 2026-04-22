@@ -7,7 +7,6 @@ For resume / notebook workflows, use ``src.train.train_with_checkpoints`` instea
 """
 import os
 import sys
-import torch
 import logging
 
 # Parent of scripts/ must be on path before importing ``src``.
@@ -25,14 +24,8 @@ def main():
     config_path = os.path.join(project_root, "configs/config.yaml")
     config = load_config(config_path)
 
-    model = run_training(config, project_root=project_root)
-
-    # Snapshot after last epoch (separate from best_model.pth inside train loop).
-    checkpoints_dir = os.path.join(project_root, "outputs/checkpoints")
-    os.makedirs(checkpoints_dir, exist_ok=True)
-    final_model_path = os.path.join(checkpoints_dir, "final_model.pth")
-    torch.save(model.state_dict(), final_model_path)
-    logger.info(f"Saved final model to {final_model_path}")
+    run_training(config, project_root=project_root)
+    logger.info("Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).")
 
 
 if __name__ == "__main__":

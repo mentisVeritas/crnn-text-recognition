@@ -1,6 +1,7 @@
+import logging
+
 import yaml
 import torch
-import logging
 
 
 def load_config(config_path):

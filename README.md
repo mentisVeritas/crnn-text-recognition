@@ -75,6 +75,8 @@ data/raw/
 python scripts/train.py
 ```
 
+Сообщения уровня INFO (и выше) из корневого логгера дополнительно **дописываются в файл** `outputs/logs/train.log` (папка создаётся автоматически; то же при обучении из ноутбука с `TRAINING=True`, если путь к чекпоинту вида `.../outputs/checkpoints/...`).
+
 ### Предсказание
 
 Запустите скрипт предсказания (нужен чекпоинт `outputs/checkpoints/best_model.pth` после обучения):
@@ -89,8 +91,14 @@ python scripts/predict.py --image path/to/image.png
 Основной интерактивный сценарий: `notebooks/experiments.ipynb`.
 
 В ноутбуке оставлен orchestration (запуск шагов, сравнение, визуальный контроль), а переиспользуемая логика вынесена в `src/`:
-- `src/train.py` — обучение (resume, чекпоинты), визуализация и лог экспериментов для ноутбука и `scripts/train.py`
+- `src/train.py` — совместимый фасад API + `run_training` для CLI/ноутбука
+- `src/data.py` — датасет OCR + общий image transform builder
+- `src/text_codec.py` — encode/decode текста для CTC
 - `src/inference.py` — preprocessing + предсказание с confidence
+- `src/training_setup.py` — сборка dataloader/model/CTC checks
+- `src/training_loop.py` — цикл эпох + resume/checkpoints
+- `src/evaluation.py` — визуализация, hard examples, leaderboard
+- `src/runtime.py` — runtime-хелперы (проектный root и file logging)
 - `src/metrics.py` — Levenshtein, Accuracy/CER/WER
 - `src/visualization.py` — общий рендер prediction grid
 - `src/experiment_log.py` — сбор предсказаний и лог запусков
@@ -103,21 +111,24 @@ crnn-text-recognition/
 ├── data/                 # данные
 │   ├── processed/        # обработанные данные
 │   └── raw/              # сырые данные
-├── logs/                 # логи обучения
 ├── models/               # сохраненные модели
 ├── notebooks/            # Jupyter ноутбуки
 ├── scripts/              # скрипты для запуска
 │   ├── predict.py        # скрипт предсказания
 │   └── train.py          # скрипт обучения
 ├── src/                  # исходный код
-│   ├── data.py           # датасет OCR (CSV + изображения)
+│   ├── data.py           # датасет OCR + image transform builder
 │   ├── model.py          # модель CRNN
-│   ├── decode.py         # жадное декодирование CTC
+│   ├── text_codec.py     # encode/decode текста для CTC
 │   ├── inference.py      # инференс + confidence
+│   ├── training_setup.py # dataloader/model setup + CTC checks
+│   ├── training_loop.py  # цикл обучения + resume/checkpoints
+│   ├── evaluation.py     # визуализация, error analysis, leaderboard
+│   ├── runtime.py        # runtime helpers (paths + file logging)
 │   ├── metrics.py        # Accuracy/CER/WER + edit distance
 │   ├── visualization.py  # визуализация предсказаний
 │   ├── experiment_log.py # лог/leaderboard экспериментов
-│   ├── train.py          # обучение + хелперы для experiments.ipynb
+│   ├── train.py          # фасад API + run_training для scripts/train.py
 │   └── utils.py          # конфиг и устройство
 ├── requirements.txt      # зависимости
 └── README.md             # этот файл

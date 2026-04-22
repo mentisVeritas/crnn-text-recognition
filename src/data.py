@@ -1,14 +1,26 @@
-import os
-import pandas as pd
-from PIL import Image
-import numpy as np
-
-import torch
-from torch.utils.data import Dataset
-import torchvision.transforms as T
 import logging
+import os
+
+import pandas as pd
+import torch
+import torchvision.transforms as T
+from PIL import Image
+from torch.utils.data import Dataset
+
+from src.text_codec import encode_text
 
 logger = logging.getLogger(__name__)
+
+
+def build_image_transform(img_height=32, img_width=128):
+    return T.Compose(
+        [
+            T.Grayscale(num_output_channels=1),
+            T.Resize((img_height, img_width)),
+            T.ToTensor(),
+            T.Normalize(mean=[0.5], std=[0.5]),
+        ]
+    )
 
 
 class OCRDataset(Dataset):
@@ -18,7 +30,7 @@ class OCRDataset(Dataset):
         labels_path,
         alphabet,
         img_height=32,
-        img_width=128
+        img_width=128,
     ):
         self.images_dir = images_dir
         df = pd.read_csv(labels_path)
@@ -31,33 +43,11 @@ class OCRDataset(Dataset):
 
         self.filenames = df["image_name"].values
         self.texts = df["utf8string"].values
-
-        self.alphabet = alphabet
         self.char2idx = {c: i + 1 for i, c in enumerate(alphabet)}  # 0 — blank (CTC)
-
-        self.transform = T.Compose([
-            T.Grayscale(num_output_channels=1),
-            T.Resize((img_height, img_width)),
-            T.ToTensor(),
-            T.Normalize(mean=[0.5], std=[0.5])
-        ])
+        self.transform = build_image_transform(img_height, img_width)
 
     def __len__(self):
         return len(self.filenames)
-
-    def encode_text(self, text):
-        # Handle NaN or non-string values
-        if not isinstance(text, str):
-            logger.warning(f"Non-string text encountered: {text} (type: {type(text)}), using space")
-            text = " "
-        
-        encoded = []
-        for c in text:
-            if c in self.char2idx:
-                encoded.append(self.char2idx[c])
-            else:
-                encoded.append(1)  # space for unknown
-        return encoded if encoded else [1]  # return at least [1] if empty
 
     def __getitem__(self, idx):
         img_name = self.filenames[idx]
@@ -67,11 +57,11 @@ class OCRDataset(Dataset):
         image = Image.open(img_path).convert("RGB")
         image = self.transform(image)
 
-        encoded = self.encode_text(text)
+        encoded = encode_text(text, self.char2idx)
 
         return {
             "image": image,
             "label": torch.tensor(encoded, dtype=torch.long),
             "length": torch.tensor(len(encoded), dtype=torch.long),
-            "text": text  # удобно для дебага
+            "text": text,  # удобно для дебага
         }
