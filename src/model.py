@@ -3,10 +3,12 @@ import torch.nn as nn
 
 
 class CRNN(nn.Module):
-    def __init__(self, num_classes):
+    """CRNN model: CNN feature extractor + BiLSTM + linear classifier."""
+
+    def __init__(self, num_classes: int):
         super().__init__()
 
-        # CNN
+        # CNN backbone reduces image height and keeps width as time dimension.
         self.cnn = nn.Sequential(
             nn.Conv2d(1, 64, 3, padding=1),
             nn.BatchNorm2d(64),
@@ -31,8 +33,7 @@ class CRNN(nn.Module):
             nn.ReLU(),
         )
 
-        # RNN
-        # After 3 MaxPool2d: H = 32/2/2/2 = 4, so features = 256 * 4 = 1024
+        # After 3 pools with input H=32 -> H'=4, so RNN input size is 256 * 4 = 1024.
         self.rnn = nn.LSTM(
             input_size=1024,
             hidden_size=128,
@@ -45,14 +46,14 @@ class CRNN(nn.Module):
         # FC
         self.fc = nn.Linear(128 * 2, num_classes)
 
-    def forward(self, x):
-        # x: [B, 1, 32, 128]
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Return logits with shape [B, T, C] for CTC."""
         x = self.cnn(x)  # [B, 256, H, W]
 
         b, c, h, w = x.size()
 
-        # превращаем в последовательность
-        x = x.permute(0, 3, 1, 2)   # [B, W, C, H]
+        # Use width as sequence length (time axis for CTC).
+        x = x.permute(0, 3, 1, 2)  # [B, W, C, H]
         x = x.reshape(b, w, c * h)  # [B, W, features]
 
         # RNN

@@ -5,26 +5,18 @@ import torch
 logger = logging.getLogger(__name__)
 
 
-def encode_text(text, char2idx):
-    """
-    Encode text to CTC target indices.
-    0 is reserved for CTC blank, unknown symbols map to 1.
-    """
+def encode_text(text: object, char2idx: dict[str, int]) -> list[int]:
+    """Encode text into CTC labels (blank=0, unknown char -> 1)."""
     if not isinstance(text, str):
         logger.warning("Non-string text encountered: %r (type=%s), using space", text, type(text))
         text = " "
 
-    encoded = []
-    for c in text:
-        encoded.append(char2idx.get(c, 1))
+    encoded = [char2idx.get(ch, 1) for ch in text]
     return encoded if encoded else [1]
 
 
-def greedy_decode(logits, alphabet):
-    """
-    Greedy decoding for CTC output.
-    logits: [T, B, C] where C = len(alphabet) + 1 (blank)
-    """
+def greedy_decode(logits: torch.Tensor, alphabet: str) -> list[str]:
+    """Greedy CTC decode for logits shaped [T, B, C]."""
     preds = torch.argmax(logits, dim=2)  # [T, B]
     decoded_texts = []
 

@@ -91,17 +91,14 @@ python scripts/predict.py --image path/to/image.png
 Основной интерактивный сценарий: `notebooks/experiments.ipynb`.
 
 В ноутбуке оставлен orchestration (запуск шагов, сравнение, визуальный контроль), а переиспользуемая логика вынесена в `src/`:
-- `src/train.py` — совместимый фасад API + `run_training` для CLI/ноутбука
+- `src/train.py` — setup + цикл обучения + чекпоинты + `run_training`
 - `src/data.py` — датасет OCR + общий image transform builder
 - `src/text_codec.py` — encode/decode текста для CTC
 - `src/inference.py` — preprocessing + предсказание с confidence
-- `src/training_setup.py` — сборка dataloader/model/CTC checks
-- `src/training_loop.py` — цикл эпох + resume/checkpoints
-- `src/evaluation.py` — визуализация, hard examples, leaderboard
-- `src/runtime.py` — runtime-хелперы (проектный root и file logging)
+- `src/evaluation.py` — визуализация, hard examples, leaderboard и лог экспериментов
 - `src/metrics.py` — Levenshtein, Accuracy/CER/WER
 - `src/visualization.py` — общий рендер prediction grid
-- `src/experiment_log.py` — сбор предсказаний и лог запусков
+- `src/utils.py` — конфиг, устройство и runtime/logging helper'ы
 
 ## Структура проекта
 
@@ -121,15 +118,11 @@ crnn-text-recognition/
 │   ├── model.py          # модель CRNN
 │   ├── text_codec.py     # encode/decode текста для CTC
 │   ├── inference.py      # инференс + confidence
-│   ├── training_setup.py # dataloader/model setup + CTC checks
-│   ├── training_loop.py  # цикл обучения + resume/checkpoints
-│   ├── evaluation.py     # визуализация, error analysis, leaderboard
-│   ├── runtime.py        # runtime helpers (paths + file logging)
+│   ├── train.py          # setup + цикл обучения + чекпоинты + run_training
+│   ├── evaluation.py     # визуализация, error analysis, leaderboard + experiment log
 │   ├── metrics.py        # Accuracy/CER/WER + edit distance
 │   ├── visualization.py  # визуализация предсказаний
-│   ├── experiment_log.py # лог/leaderboard экспериментов
-│   ├── train.py          # фасад API + run_training для scripts/train.py
-│   └── utils.py          # конфиг и устройство
+│   └── utils.py          # конфиг, устройство и runtime/logging helpers
 ├── requirements.txt      # зависимости
 └── README.md             # этот файл
 ```

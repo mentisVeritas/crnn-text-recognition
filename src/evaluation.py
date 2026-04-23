@@ -1,21 +1,107 @@
-import logging
-from pathlib import Path
+"""Evaluation helpers: prediction collection, visualization and leaderboard logging."""
 
+import logging
+from datetime import datetime
+from pathlib import Path
+from typing import Callable, Sequence
+
+import pandas as pd
 import torch
 
-from src.experiment_log import append_experiment_log, collect_predictions, metrics_from_rows
 from src.inference import decode_with_confidence
-from src.metrics import EvalMetrics
+from src.metrics import EvalMetrics, compute_metrics, levenshtein
 from src.visualization import plot_prediction_grid, sample_indices
 
 logger = logging.getLogger(__name__)
 
 
-def _make_predict_fn(model: torch.nn.Module, alphabet: str, device: torch.device):
+def _make_predict_fn(model: torch.nn.Module, alphabet: str, device: torch.device) -> Callable[[torch.Tensor], tuple[str, float]]:
     def predict_fn(image_tensor: torch.Tensor) -> tuple[str, float]:
         return decode_with_confidence(model, image_tensor, alphabet, device)
 
     return predict_fn
+
+
+def collect_predictions(
+    dataset,
+    indices: Sequence[int],
+    predict_fn: Callable[[torch.Tensor], tuple[str, float]],
+) -> list[dict]:
+    """Collect decoded predictions and per-sample metadata for selected dataset indices."""
+    rows = []
+    for idx in indices:
+        item = dataset[idx]
+        image = item["image"]
+        true_text = str(item["text"])
+        pred_text, conf = predict_fn(image.unsqueeze(0))
+        dist = levenshtein(pred_text, true_text)
+        rows.append(
+            {
+                "idx": idx,
+                "image": image,
+                "true": true_text,
+                "pred": pred_text,
+                "confidence": conf,
+                "dist": dist,
+                "correct": pred_text == true_text,
+            }
+        )
+    return rows
+
+
+def metrics_from_rows(rows) -> EvalMetrics:
+    """Compute aggregate metrics from collected row dicts."""
+    pairs = [(r["pred"], r["true"], float(r["confidence"])) for r in rows]
+    return compute_metrics(pairs)
+
+
+def append_experiment_log(
+    log_path: Path,
+    metrics: EvalMetrics,
+    mode: str,
+    config: dict,
+    sample_count: int,
+    model_file: str,
+    note: str = "",
+) -> dict:
+    """Append one evaluation run to CSV leaderboard and return written row."""
+    row = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "mode": mode,
+        "epochs_config": int(config["epochs"]),
+        "batch_size": int(config["batch_size"]),
+        "lr": float(config["lr"]),
+        "img_size": f"{config['img_height']}x{config['img_width']}",
+        "sample_count": int(sample_count),
+        "accuracy": float(metrics.accuracy),
+        "cer": float(metrics.cer),
+        "wer": float(metrics.wer),
+        "avg_confidence": float(metrics.avg_confidence),
+        "correct": int(metrics.correct),
+        "total": int(metrics.total),
+        "model_file": model_file,
+        "note": str(note),
+    }
+
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    df_new = pd.DataFrame([row])
+    if log_path.exists():
+        df_old = pd.read_csv(log_path)
+        df_all = pd.concat([df_old, df_new], ignore_index=True)
+    else:
+        df_all = df_new
+    df_all.to_csv(log_path, index=False)
+    return row
+
+
+def load_leaderboard(log_path: Path) -> pd.DataFrame:
+    """Load and sort leaderboard CSV by quality metrics."""
+    if not log_path.exists():
+        return pd.DataFrame()
+    df = pd.read_csv(log_path)
+    if df.empty:
+        return df
+    return df.sort_values(by=["accuracy", "cer", "wer"], ascending=[False, True, True]).reset_index(drop=True)
 
 
 def visualize_val_predictions(
@@ -27,6 +113,7 @@ def visualize_val_predictions(
     fixed: bool = False,
     seed: int = 42,
 ):
+    """Show random/fixed validation samples and print aggregate metrics."""
     predict_fn = _make_predict_fn(model, config["alphabet"], device)
     indices = sample_indices(len(val_dataset), sample_count, fixed, seed)
     rows = collect_predictions(val_dataset, indices, predict_fn)
@@ -60,6 +147,7 @@ def show_hard_val_examples(
     fixed: bool = True,
     seed: int = 42,
 ):
+    """Display the hardest examples by edit distance on a validation subset."""
     predict_fn = _make_predict_fn(model, config["alphabet"], device)
     indices = sample_indices(len(val_dataset), sample_count, fixed, seed)
     rows = collect_predictions(val_dataset, indices, predict_fn)
@@ -92,6 +180,7 @@ def evaluate_val_subset(
     fixed: bool,
     seed: int,
 ) -> EvalMetrics:
+    """Run inference on a subset and return aggregated quality metrics."""
     predict_fn = _make_predict_fn(model, config["alphabet"], device)
     indices = sample_indices(len(val_dataset), sample_count, fixed, seed)
     rows = collect_predictions(val_dataset, indices, predict_fn)
@@ -112,6 +201,7 @@ def run_leaderboard_log(
     seed: int,
     note: str = "",
 ):
+    """Evaluate subset and append one row to outputs/experiment_log.csv."""
     log_path = project_root / "outputs" / "experiment_log.csv"
     metrics = evaluate_val_subset(model, val_dataset, config, device, sample_count, fixed, seed)
 
@@ -138,6 +228,7 @@ def run_leaderboard_log(
 
 
 def show_leaderboard(log_path: Path, top_k: int = 10):
+    """Display top-k leaderboard rows in notebook or fallback text mode."""
     import pandas as pd
 
     if not log_path.exists():

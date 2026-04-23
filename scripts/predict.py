@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def load_model(checkpoint_path, num_classes, device):
+    """Load CRNN weights from best/checkpoint payload format."""
     model = CRNN(num_classes=num_classes)
     payload = torch.load(checkpoint_path, map_location=device)
     state_dict = payload["model_state"] if isinstance(payload, dict) and "model_state" in payload else payload
@@ -24,12 +25,8 @@ def load_model(checkpoint_path, num_classes, device):
     return model
 
 
-def predict(model, image_tensor, alphabet, device):
-    pred_text, conf = decode_with_confidence(model, image_tensor, alphabet, device)
-    return pred_text, conf
-
-
 def main():
+    """Predict one image or a small sample from dataset folder."""
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="Predict text from image")
     parser.add_argument('--image', type=str, help='Path to image file')
@@ -54,7 +51,7 @@ def main():
             logger.error("Image file not found.")
             return
         image_tensor = preprocess_image(args.image, config["img_height"], config["img_width"])
-        predicted_text, conf = predict(model, image_tensor, config["alphabet"], device)
+        predicted_text, conf = decode_with_confidence(model, image_tensor, config["alphabet"], device)
         logger.info(f"Predicted text: {predicted_text} (confidence={conf * 100:.1f}%)")
     else:
         # Example prediction on a few images
@@ -73,7 +70,7 @@ def main():
         for img_file in image_files:
             img_path = os.path.join(images_dir, img_file)
             image_tensor = preprocess_image(img_path, config["img_height"], config["img_width"])
-            predicted_text, conf = predict(model, image_tensor, config["alphabet"], device)
+            predicted_text, conf = decode_with_confidence(model, image_tensor, config["alphabet"], device)
             logger.info(f"{img_file}: {predicted_text} (confidence={conf * 100:.1f}%)")
 
 

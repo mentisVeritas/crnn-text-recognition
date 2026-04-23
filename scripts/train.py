@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+    """Load config and run full training pipeline."""
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     config_path = os.path.join(project_root, "configs/config.yaml")
     config = load_config(config_path)

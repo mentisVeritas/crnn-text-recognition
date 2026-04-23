@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable, Sequence, Tuple
+from typing import Sequence
 
 
 def levenshtein(a: str, b: str) -> int:
@@ -40,10 +40,8 @@ class EvalMetrics:
     total: int
 
 
-def compute_metrics(pairs: Sequence[Tuple[str, str, float]]) -> EvalMetrics:
-    """
-    pairs: sequence of (pred_text, true_text, confidence)
-    """
+def compute_metrics(pairs: Sequence[tuple[str, str, float]]) -> EvalMetrics:
+    """Compute word-level accuracy, CER, WER and average confidence."""
     total = len(pairs)
     correct = sum(1 for pred, true, _ in pairs if pred == true)
     accuracy = (correct / total) if total else 0.0

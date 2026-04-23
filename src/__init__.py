@@ -1,1 +1,1 @@
-"""CRNN OCR package modules."""
+"""Core package for CRNN text recognition."""

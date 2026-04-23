@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Tuple
 
 import torch
 from PIL import Image
@@ -11,6 +10,7 @@ from src.text_codec import greedy_decode
 
 
 def preprocess_image(image_path: str | Path, img_height: int, img_width: int) -> torch.Tensor:
+    """Load image and produce model-ready tensor [1, 1, H, W]."""
     transform = build_image_transform(img_height, img_width)
     image = Image.open(image_path).convert("RGB")
     return transform(image).unsqueeze(0)
@@ -21,7 +21,7 @@ def decode_with_confidence(
     image_tensor: torch.Tensor,
     alphabet: str,
     device: torch.device,
-) -> Tuple[str, float]:
+) -> tuple[str, float]:
     """Return decoded text + approximate confidence in [0, 1]."""
     with torch.no_grad():
         logits = model(image_tensor.to(device))  # [B, T, C]

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import random
-from typing import Iterable, Sequence
+from typing import Sequence
 
 import matplotlib.pyplot as plt
 import torch
@@ -22,9 +22,7 @@ def plot_prediction_grid(
     title_fontsize_pred: int = 14,
     title_fontsize_true: int = 16,
 ) -> None:
-    """
-    items: list of dicts with keys: image (C,H,W), pred, true, confidence, correct
-    """
+    """Render prediction cards in a grid for quick qualitative checks."""
     count = len(items)
     if count == 0:
         print("No items to display.")
