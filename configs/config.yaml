@@ -1,0 +1,9 @@
+images_dir: "data/processed/gendata/images"
+labels_path: "data/processed/gendata/labels.txt"
+alphabet: " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?;:-()[]{}<>\"'@#$%^&*_+=/\\|~`&"
+batch_size: 16
+lr: 0.001
+epochs: 33
+img_height: 48
+img_width: 768
+resume: true

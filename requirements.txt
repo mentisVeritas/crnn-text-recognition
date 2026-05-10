@@ -1,0 +1,12 @@
+torch~=2.11.0
+PyYAML~=6.0
+tqdm~=4.66.1
+pandas~=2.2.2
+torchvision~=0.26.0
+pillow~=10.3.0
+uvicorn~=0.24.0
+fastapi~=0.104.1
+numpy~=1.26.4
+Faker~=40.15.0
+matplotlib~=3.8.4
+python-multipart~=0.0.6

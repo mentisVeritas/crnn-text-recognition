@@ -1,0 +1,316 @@
+2026-05-08 23:50:07,573 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-08 23:50:07,590 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-08 23:50:07,590 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-08 23:50:07,590 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-08 23:50:07,717 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-08 23:50:07,723 | INFO | src.train | Dataset size: 100000
+2026-05-08 23:50:07,810 | INFO | src.train | Model parameters: 10,457,441
+2026-05-08 23:50:08,199 | INFO | src.train | Model time steps (T): 382
+2026-05-08 23:50:08,200 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-08 23:50:08,200 | INFO | src.train | Resume checkpoints: True
+2026-05-08 23:51:40,157 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-08 23:51:40,169 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-08 23:51:40,169 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-08 23:51:40,169 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-08 23:51:40,284 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-08 23:51:40,288 | INFO | src.train | Dataset size: 100000
+2026-05-08 23:51:40,341 | INFO | src.train | Model parameters: 10,457,441
+2026-05-08 23:51:40,459 | INFO | src.train | Model time steps (T): 382
+2026-05-08 23:51:40,460 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-08 23:51:40,460 | INFO | src.train | Resume checkpoints: True
+2026-05-08 23:56:48,792 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-08 23:56:48,804 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-08 23:56:48,804 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-08 23:56:48,804 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-08 23:56:48,922 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-08 23:56:48,923 | INFO | src.train | Dataset size: 100000
+2026-05-08 23:56:48,965 | INFO | src.train | Model parameters: 10,457,441
+2026-05-08 23:56:49,059 | INFO | src.train | Model time steps (T): 382
+2026-05-08 23:56:49,060 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-08 23:56:49,060 | INFO | src.train | Resume checkpoints: True
+2026-05-09 00:11:55,695 | INFO | src.train | Epoch 1/22 | train_loss=4.2128 (steps=5938, skipped=0) | val_loss=4.0362 (steps=313, skipped=0)
+2026-05-09 00:11:55,939 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 00:15:12,392 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 00:15:12,406 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 00:15:12,406 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 00:15:12,406 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 00:15:12,525 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 00:15:12,527 | INFO | src.train | Dataset size: 100000
+2026-05-09 00:15:12,575 | INFO | src.train | Model parameters: 10,457,441
+2026-05-09 00:15:12,727 | INFO | src.train | Model time steps (T): 382
+2026-05-09 00:15:12,727 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 00:15:12,728 | INFO | src.train | Resume checkpoints: True
+2026-05-09 00:15:12,808 | INFO | src.train | Resumed from checkpoint; best_val_loss=4.0362; next loop epoch index=1 (epochs in config=22)
+2026-05-09 00:28:00,649 | INFO | src.train | Epoch 2/22 | train_loss=4.0746 (steps=5938, skipped=0) | val_loss=3.9985 (steps=313, skipped=0)
+2026-05-09 00:28:00,901 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 00:37:05,967 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 00:37:05,983 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 00:37:05,983 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 00:37:05,983 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 00:37:06,108 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 00:37:06,110 | INFO | src.train | Dataset size: 100000
+2026-05-09 00:37:06,159 | INFO | src.train | Model parameters: 10,457,441
+2026-05-09 00:37:06,320 | INFO | src.train | Model time steps (T): 382
+2026-05-09 00:37:06,320 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 00:37:06,320 | INFO | src.train | Resume checkpoints: True
+2026-05-09 00:37:06,401 | INFO | src.train | Resumed from checkpoint; best_val_loss=3.9985; next loop epoch index=2 (epochs in config=22)
+2026-05-09 00:49:55,303 | INFO | src.train | Epoch 3/22 | train_loss=4.0488 (steps=5938, skipped=0) | val_loss=3.9834 (steps=313, skipped=0)
+2026-05-09 00:49:55,435 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:02:32,199 | INFO | src.train | Epoch 4/22 | train_loss=4.0274 (steps=5938, skipped=0) | val_loss=3.9927 (steps=313, skipped=0)
+2026-05-09 01:10:14,230 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 01:10:14,245 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 01:10:14,245 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 01:10:14,245 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 01:10:14,365 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 01:10:14,367 | INFO | src.train | Dataset size: 100000
+2026-05-09 01:10:14,393 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 01:10:14,540 | INFO | src.train | Model time steps (T): 382
+2026-05-09 01:10:14,540 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 01:10:14,540 | INFO | src.train | Resume checkpoints: True
+2026-05-09 01:16:29,274 | INFO | src.train | Epoch 1/22 | train_loss=1.9794 (steps=5938, skipped=0) | val_loss=0.7857 (steps=313, skipped=0)
+2026-05-09 01:16:29,344 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:22:41,482 | INFO | src.train | Epoch 2/22 | train_loss=0.7953 (steps=5938, skipped=0) | val_loss=0.5581 (steps=313, skipped=0)
+2026-05-09 01:22:41,574 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:28:52,077 | INFO | src.train | Epoch 3/22 | train_loss=0.6283 (steps=5938, skipped=0) | val_loss=0.4926 (steps=313, skipped=0)
+2026-05-09 01:28:52,155 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:35:08,525 | INFO | src.train | Epoch 4/22 | train_loss=0.5482 (steps=5938, skipped=0) | val_loss=0.4461 (steps=313, skipped=0)
+2026-05-09 01:35:08,609 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:41:25,140 | INFO | src.train | Epoch 5/22 | train_loss=0.4971 (steps=5938, skipped=0) | val_loss=0.4032 (steps=313, skipped=0)
+2026-05-09 01:41:25,253 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:47:49,963 | INFO | src.train | Epoch 6/22 | train_loss=0.4622 (steps=5938, skipped=0) | val_loss=0.3760 (steps=313, skipped=0)
+2026-05-09 01:47:50,031 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 01:54:10,310 | INFO | src.train | Epoch 7/22 | train_loss=0.4339 (steps=5938, skipped=0) | val_loss=0.3654 (steps=313, skipped=0)
+2026-05-09 01:54:10,384 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:00:19,057 | INFO | src.train | Epoch 8/22 | train_loss=0.4140 (steps=5938, skipped=0) | val_loss=0.3496 (steps=313, skipped=0)
+2026-05-09 02:00:19,126 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:06:21,666 | INFO | src.train | Epoch 9/22 | train_loss=0.3938 (steps=5938, skipped=0) | val_loss=0.3347 (steps=313, skipped=0)
+2026-05-09 02:06:21,710 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:12:03,319 | INFO | src.train | Epoch 10/22 | train_loss=0.3781 (steps=5938, skipped=0) | val_loss=0.3259 (steps=313, skipped=0)
+2026-05-09 02:12:03,368 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:17:46,807 | INFO | src.train | Epoch 11/22 | train_loss=0.3664 (steps=5938, skipped=0) | val_loss=0.3219 (steps=313, skipped=0)
+2026-05-09 02:17:46,852 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:23:26,882 | INFO | src.train | Epoch 12/22 | train_loss=0.3534 (steps=5938, skipped=0) | val_loss=0.3145 (steps=313, skipped=0)
+2026-05-09 02:23:26,931 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:29:04,545 | INFO | src.train | Epoch 13/22 | train_loss=0.3438 (steps=5938, skipped=0) | val_loss=0.3118 (steps=313, skipped=0)
+2026-05-09 02:29:04,602 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:34:43,801 | INFO | src.train | Epoch 14/22 | train_loss=0.3343 (steps=5938, skipped=0) | val_loss=0.3034 (steps=313, skipped=0)
+2026-05-09 02:34:43,857 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:40:22,288 | INFO | src.train | Epoch 15/22 | train_loss=0.3257 (steps=5938, skipped=0) | val_loss=0.3044 (steps=313, skipped=0)
+2026-05-09 02:46:01,097 | INFO | src.train | Epoch 16/22 | train_loss=0.3173 (steps=5938, skipped=0) | val_loss=0.3009 (steps=313, skipped=0)
+2026-05-09 02:46:01,150 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:51:41,119 | INFO | src.train | Epoch 17/22 | train_loss=0.3112 (steps=5938, skipped=0) | val_loss=0.2923 (steps=313, skipped=0)
+2026-05-09 02:51:41,180 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 02:57:21,592 | INFO | src.train | Epoch 18/22 | train_loss=0.3035 (steps=5938, skipped=0) | val_loss=0.2967 (steps=313, skipped=0)
+2026-05-09 03:03:01,347 | INFO | src.train | Epoch 19/22 | train_loss=0.2989 (steps=5938, skipped=0) | val_loss=0.2856 (steps=313, skipped=0)
+2026-05-09 03:03:01,395 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 03:08:40,432 | INFO | src.train | Epoch 20/22 | train_loss=0.2915 (steps=5938, skipped=0) | val_loss=0.2848 (steps=313, skipped=0)
+2026-05-09 03:08:40,486 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 03:14:20,714 | INFO | src.train | Epoch 21/22 | train_loss=0.2874 (steps=5938, skipped=0) | val_loss=0.2830 (steps=313, skipped=0)
+2026-05-09 03:14:20,774 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 03:20:00,322 | INFO | src.train | Epoch 22/22 | train_loss=0.2822 (steps=5938, skipped=0) | val_loss=0.2979 (steps=313, skipped=0)
+2026-05-09 03:20:00,386 | INFO | src.train | Best val loss: 0.2830
+2026-05-09 03:20:00,439 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).
+2026-05-09 09:27:19,954 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 09:27:19,967 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 09:27:19,967 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 09:27:19,967 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 09:27:20,116 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 09:27:20,117 | INFO | src.train | Dataset size: 100000
+2026-05-09 09:27:20,144 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 09:27:20,269 | INFO | src.train | Model time steps (T): 382
+2026-05-09 09:27:20,269 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 09:27:20,269 | INFO | src.train | Resume checkpoints: True
+2026-05-09 09:27:20,314 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2830; next loop epoch index=22 (epochs in config=30)
+2026-05-09 09:34:40,817 | INFO | src.train | Epoch 23/30 | train_loss=0.2789 (steps=5938, skipped=0) | val_loss=0.2802 (steps=313, skipped=0)
+2026-05-09 09:34:40,886 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 09:40:26,309 | INFO | src.train | Epoch 24/30 | train_loss=0.2764 (steps=5938, skipped=0) | val_loss=0.2782 (steps=313, skipped=0)
+2026-05-09 09:40:26,364 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 09:46:07,057 | INFO | src.train | Epoch 25/30 | train_loss=0.2714 (steps=5938, skipped=0) | val_loss=0.2775 (steps=313, skipped=0)
+2026-05-09 09:46:07,109 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 09:51:51,103 | INFO | src.train | Epoch 26/30 | train_loss=0.2660 (steps=5938, skipped=0) | val_loss=0.2741 (steps=313, skipped=0)
+2026-05-09 09:51:51,156 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 09:57:32,057 | INFO | src.train | Epoch 27/30 | train_loss=0.2623 (steps=5938, skipped=0) | val_loss=0.2673 (steps=313, skipped=0)
+2026-05-09 09:57:32,108 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 10:18:17,640 | INFO | src.train | Epoch 28/30 | train_loss=0.2596 (steps=5938, skipped=0) | val_loss=0.2707 (steps=313, skipped=0)
+2026-05-09 10:24:01,604 | INFO | src.train | Epoch 29/30 | train_loss=0.2555 (steps=5938, skipped=0) | val_loss=0.2699 (steps=313, skipped=0)
+2026-05-09 10:30:18,660 | INFO | src.train | Epoch 30/30 | train_loss=0.2518 (steps=5938, skipped=0) | val_loss=0.2761 (steps=313, skipped=0)
+2026-05-09 10:30:18,717 | INFO | src.train | Best val loss: 0.2673
+2026-05-09 10:30:18,752 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).
+2026-05-09 21:35:20,048 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:35:20,065 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:35:20,065 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:35:20,065 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:35:20,258 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:35:20,260 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:35:20,304 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:35:20,492 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:35:20,492 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:35:20,492 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:35:20,549 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=30)
+2026-05-09 21:35:20,558 | WARNING | src.train | No training steps will run (next epoch index 30 >= epochs=30). Raise epochs or use resume with a younger checkpoint.
+2026-05-09 21:35:20,558 | INFO | src.train | Best val loss: 0.2673
+2026-05-09 21:35:20,561 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).
+2026-05-09 21:37:47,354 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:37:47,366 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:37:47,366 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:37:47,366 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:37:47,493 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:37:47,495 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:37:47,535 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:37:47,642 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:37:47,642 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:37:47,642 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:37:47,694 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=31)
+2026-05-09 21:39:46,508 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:39:46,534 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:39:46,534 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:39:46,534 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:39:46,893 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:39:46,898 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:39:46,968 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:39:47,195 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:39:47,195 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:39:47,195 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:39:47,262 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=31)
+2026-05-09 21:40:37,051 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:40:37,065 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:40:37,066 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:40:37,066 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:40:37,241 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:40:37,246 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:40:37,288 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:40:37,563 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:40:37,563 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:40:37,563 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:40:37,641 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=31)
+2026-05-09 21:41:22,784 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:41:22,798 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:41:22,798 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:41:22,798 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:41:22,959 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:41:22,961 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:41:22,992 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:41:23,128 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:41:23,128 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:41:23,128 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:41:23,169 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=31)
+2026-05-09 21:41:42,472 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:41:42,484 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:41:42,484 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:41:42,484 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:41:42,601 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:41:42,603 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:41:42,625 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:41:42,724 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:41:42,724 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:41:42,724 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:41:42,759 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=31)
+2026-05-09 21:41:58,002 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 21:41:58,014 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 21:41:58,014 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 21:41:58,014 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 21:41:58,130 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 21:41:58,131 | INFO | src.train | Dataset size: 100000
+2026-05-09 21:41:58,153 | INFO | src.train | Model parameters: 2,364,769
+2026-05-09 21:41:58,243 | INFO | src.train | Model time steps (T): 382
+2026-05-09 21:41:58,243 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 21:41:58,243 | INFO | src.train | Resume checkpoints: True
+2026-05-09 21:41:58,276 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.2673; next loop epoch index=30 (epochs in config=31)
+2026-05-09 22:09:12,681 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-09 22:09:12,709 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-09 22:09:12,709 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-09 22:09:12,709 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-09 22:09:12,976 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-09 22:09:12,980 | INFO | src.train | Dataset size: 100000
+2026-05-09 22:09:13,040 | INFO | src.train | Model parameters: 1,971,553
+2026-05-09 22:09:13,343 | INFO | src.train | Model time steps (T): 191
+2026-05-09 22:09:13,343 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-09 22:09:13,343 | INFO | src.train | Resume checkpoints: True
+2026-05-09 22:22:58,481 | INFO | src.train | Epoch 1/31 | train_loss=2.1099 (steps=5938, skipped=0) | val_loss=0.9858 (steps=313, skipped=0)
+2026-05-09 22:22:58,556 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 22:35:14,515 | INFO | src.train | Epoch 2/31 | train_loss=0.9534 (steps=5938, skipped=0) | val_loss=0.7497 (steps=313, skipped=0)
+2026-05-09 22:35:14,590 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 22:46:03,727 | INFO | src.train | Epoch 3/31 | train_loss=0.7872 (steps=5938, skipped=0) | val_loss=0.6421 (steps=313, skipped=0)
+2026-05-09 22:46:03,779 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 22:57:23,748 | INFO | src.train | Epoch 4/31 | train_loss=0.7008 (steps=5938, skipped=0) | val_loss=0.5856 (steps=313, skipped=0)
+2026-05-09 22:57:23,795 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 23:10:13,444 | INFO | src.train | Epoch 5/31 | train_loss=0.6441 (steps=5938, skipped=0) | val_loss=0.5526 (steps=313, skipped=0)
+2026-05-09 23:10:13,491 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 23:25:38,893 | INFO | src.train | Epoch 6/31 | train_loss=0.6014 (steps=5938, skipped=0) | val_loss=0.5395 (steps=313, skipped=0)
+2026-05-09 23:25:38,953 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 23:35:51,203 | INFO | src.train | Epoch 7/31 | train_loss=0.5688 (steps=5938, skipped=0) | val_loss=0.4967 (steps=313, skipped=0)
+2026-05-09 23:35:51,288 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 23:47:24,452 | INFO | src.train | Epoch 8/31 | train_loss=0.5393 (steps=5938, skipped=0) | val_loss=0.4782 (steps=313, skipped=0)
+2026-05-09 23:47:24,497 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-09 23:58:26,368 | INFO | src.train | Epoch 9/31 | train_loss=0.5178 (steps=5938, skipped=0) | val_loss=0.4579 (steps=313, skipped=0)
+2026-05-09 23:58:26,420 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 00:00:06,515 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-10 00:00:06,539 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-10 00:00:06,540 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-10 00:00:06,540 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-10 00:00:06,843 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-10 00:00:06,847 | INFO | src.train | Dataset size: 100000
+2026-05-10 00:00:06,902 | INFO | src.train | Model parameters: 1,971,553
+2026-05-10 00:00:07,241 | INFO | src.train | Model time steps (T): 191
+2026-05-10 00:00:07,241 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-10 00:00:07,241 | INFO | src.train | Resume checkpoints: True
+2026-05-10 00:00:07,292 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.4579; next loop epoch index=9 (epochs in config=31)
+2026-05-10 00:09:51,478 | INFO | src.train | Epoch 10/31 | train_loss=0.4998 (steps=5938, skipped=0) | val_loss=0.4562 (steps=313, skipped=0)
+2026-05-10 00:09:51,521 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 00:19:32,043 | INFO | src.train | Epoch 11/31 | train_loss=0.4827 (steps=5938, skipped=0) | val_loss=0.4300 (steps=313, skipped=0)
+2026-05-10 00:19:32,150 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 00:31:03,958 | INFO | src.train | Epoch 12/31 | train_loss=0.4694 (steps=5938, skipped=0) | val_loss=0.4208 (steps=313, skipped=0)
+2026-05-10 00:31:03,998 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 00:42:08,958 | INFO | src.train | Epoch 13/31 | train_loss=0.4562 (steps=5938, skipped=0) | val_loss=0.4128 (steps=313, skipped=0)
+2026-05-10 00:42:09,019 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 00:57:45,067 | INFO | src.train | Epoch 14/31 | train_loss=0.4437 (steps=5938, skipped=0) | val_loss=0.4067 (steps=313, skipped=0)
+2026-05-10 00:57:45,131 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 01:13:43,165 | INFO | src.train | Epoch 15/31 | train_loss=0.4336 (steps=5938, skipped=0) | val_loss=0.3921 (steps=313, skipped=0)
+2026-05-10 01:13:43,243 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 01:29:41,091 | INFO | src.train | Epoch 16/31 | train_loss=0.4241 (steps=5938, skipped=0) | val_loss=0.3964 (steps=313, skipped=0)
+2026-05-10 01:42:40,103 | INFO | src.train | Epoch 17/31 | train_loss=0.4153 (steps=5938, skipped=0) | val_loss=0.3899 (steps=313, skipped=0)
+2026-05-10 01:42:40,154 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 01:52:31,664 | INFO | src.train | Epoch 18/31 | train_loss=0.4064 (steps=5938, skipped=0) | val_loss=0.3763 (steps=313, skipped=0)
+2026-05-10 01:52:31,709 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 02:01:55,111 | INFO | src.train | Epoch 19/31 | train_loss=0.3977 (steps=5938, skipped=0) | val_loss=0.3690 (steps=313, skipped=0)
+2026-05-10 02:01:55,159 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 02:11:58,196 | INFO | src.train | Epoch 20/31 | train_loss=0.3936 (steps=5938, skipped=0) | val_loss=0.3773 (steps=313, skipped=0)
+2026-05-10 02:21:27,033 | INFO | src.train | Epoch 21/31 | train_loss=0.3869 (steps=5938, skipped=0) | val_loss=0.3642 (steps=313, skipped=0)
+2026-05-10 02:21:27,079 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 02:31:04,251 | INFO | src.train | Epoch 22/31 | train_loss=0.3812 (steps=5938, skipped=0) | val_loss=0.3601 (steps=313, skipped=0)
+2026-05-10 02:31:04,304 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 02:40:36,408 | INFO | src.train | Epoch 23/31 | train_loss=0.3748 (steps=5938, skipped=0) | val_loss=0.3516 (steps=313, skipped=0)
+2026-05-10 02:40:36,449 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 02:50:05,472 | INFO | src.train | Epoch 24/31 | train_loss=0.3713 (steps=5938, skipped=0) | val_loss=0.3467 (steps=313, skipped=0)
+2026-05-10 02:50:05,512 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 02:59:35,125 | INFO | src.train | Epoch 25/31 | train_loss=0.3637 (steps=5938, skipped=0) | val_loss=0.3441 (steps=313, skipped=0)
+2026-05-10 02:59:35,169 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 03:09:01,658 | INFO | src.train | Epoch 26/31 | train_loss=0.3624 (steps=5938, skipped=0) | val_loss=0.3506 (steps=313, skipped=0)
+2026-05-10 03:18:27,138 | INFO | src.train | Epoch 27/31 | train_loss=0.3577 (steps=5938, skipped=0) | val_loss=0.3400 (steps=313, skipped=0)
+2026-05-10 03:18:27,185 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 03:27:55,305 | INFO | src.train | Epoch 28/31 | train_loss=0.3521 (steps=5938, skipped=0) | val_loss=0.3348 (steps=313, skipped=0)
+2026-05-10 03:27:55,354 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 03:37:25,876 | INFO | src.train | Epoch 29/31 | train_loss=0.3538 (steps=5938, skipped=0) | val_loss=0.3303 (steps=313, skipped=0)
+2026-05-10 03:37:25,916 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 03:46:53,546 | INFO | src.train | Epoch 30/31 | train_loss=0.3454 (steps=5938, skipped=0) | val_loss=0.3320 (steps=313, skipped=0)
+2026-05-10 03:56:20,384 | INFO | src.train | Epoch 31/31 | train_loss=0.3437 (steps=5938, skipped=0) | val_loss=0.3296 (steps=313, skipped=0)
+2026-05-10 03:56:20,444 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 03:56:20,483 | INFO | src.train | Best val loss: 0.3296
+2026-05-10 03:56:20,524 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).
+2026-05-10 14:36:37,744 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-10 14:36:37,756 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-10 14:36:37,756 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-10 14:36:37,757 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-10 14:36:37,879 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-10 14:36:37,881 | INFO | src.train | Dataset size: 100000
+2026-05-10 14:36:37,938 | INFO | src.train | Model parameters: 1,971,553
+2026-05-10 14:36:38,082 | INFO | src.train | Model time steps (T): 191
+2026-05-10 14:36:38,082 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-10 14:36:38,082 | INFO | src.train | Resume checkpoints: True
+2026-05-10 14:36:38,119 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.3296; next loop epoch index=31 (epochs in config=33)
+2026-05-10 14:53:10,519 | INFO | src.train | Epoch 32/33 | train_loss=0.3404 (steps=5938, skipped=0) | val_loss=0.3261 (steps=313, skipped=0)
+2026-05-10 14:53:10,607 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 15:09:26,538 | INFO | src.train | Epoch 33/33 | train_loss=0.3369 (steps=5938, skipped=0) | val_loss=0.3240 (steps=313, skipped=0)
+2026-05-10 15:09:26,682 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
+2026-05-10 15:09:26,761 | INFO | src.train | Best val loss: 0.3240
+2026-05-10 15:09:27,054 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).

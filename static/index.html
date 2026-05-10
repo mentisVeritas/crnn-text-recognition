@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRNN Text Recognition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        /* Upload Area */
+        .upload-section {
+            margin-bottom: 30px;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
+        }
+
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: #f0f2ff;
+            transform: translateY(-2px);
+        }
+
+        .upload-area.dragover {
+            border-color: #764ba2;
+            background: #e8ebff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            color: #666;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        /* Upload Buttons */
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #e8ebff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f2ff;
+        }
+
+        /* Image Preview */
+        .preview-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        .preview-section.active {
+            display: block;
+        }
+
+        .preview-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            max-height: 400px;
+            overflow: auto;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Result Section */
+        .result-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .result-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .result-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .confidence {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .confidence-bar {
+            background: #e8ebff;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 10px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Error State */
+        .error {
+            background: #ffe8e8;
+            color: #d32f2f;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #d32f2f;
+            display: none;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .result-text {
+                font-size: 18px;
+            }
+
+            .upload-area {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            margin-top: 10px;
+            background: #667eea !important;
+            color: white !important;
+            border: none !important;
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        .copy-btn:hover {
+            background: #764ba2 !important;
+        }
+
+        .copied-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .copied-notification.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Text Recognition</h1>
+            <p>Upload an image and get the recognized text instantly</p>
+        </div>
+
+        <div class="content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📸</div>
+                    <div class="upload-text">Drag and drop an image here</div>
+                    <div class="upload-hint">or click to select a file</div>
+                </div>
+
+                <input type="file" id="fileInput" accept="image/*">
+
+                <div class="button-group">
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                        📁 Choose File
+                    </button>
+                    <button class="btn-secondary" onclick="pasteFromClipboard()">
+                        📋 Paste Image
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <div class="loading-text">Processing your image...</div>
+            </div>
+
+            <!-- Preview & Result Section -->
+            <div class="preview-section" id="previewSection">
+                <div class="preview-title">📷 Image Preview</div>
+                <div class="image-container">
+                    <img id="previewImage" src="" alt="Preview">
+                </div>
+
+                <div class="result-section">
+                    <div class="result-label">Recognized Text</div>
+                    <div class="result-text" id="resultText">-</div>
+                    <button class="copy-btn" onclick="copyToClipboard()">📋 Copy Text</button>
+                    <div class="confidence">
+                        <strong>Confidence:</strong> <span id="confidence">0%</span>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidenceFill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error" id="error"></div>
+        </div>
+    </div>
+
+    <div class="copied-notification" id="copiedNotification">
+        ✓ Copied to clipboard!
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewSection = document.getElementById('previewSection');
+        const previewImage = document.getElementById('previewImage');
+        const resultText = document.getElementById('resultText');
+        const confidence = document.getElementById('confidence');
+        const confidenceFill = document.getElementById('confidenceFill');
+        const loading = document.getElementById('loading');
+        const errorDiv = document.getElementById('error');
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type.startsWith('image/')) {
+                handleFile(files[0]);
+            } else {
+                showError('Please drop an image file');
+            }
+        });
+
+        // Click to upload
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        // Handle file
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                showError('Please select an image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                // Show preview
+                previewImage.src = e.target.result;
+                previewSection.classList.add('active');
+                errorDiv.classList.remove('active');
+
+                // Send to API
+                sendToAPI(file);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function sendToAPI(file) {
+            loading.classList.add('active');
+            errorDiv.classList.remove('active');
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                loading.classList.remove('active');
+
+                if (data.success) {
+                    resultText.textContent = data.text || '(empty)';
+
+                    const confPercent = Math.round(data.confidence);
+
+                    confidence.textContent = `${confPercent}%`;
+                    confidenceFill.style.width = `${confPercent}%`;
+
+                    errorDiv.classList.remove('active');
+                } else {
+                    showError(data.error || 'Error processing image');
+                }
+            })
+            .catch(error => {
+                loading.classList.remove('active');
+                showError('Network error: ' + error.message);
+            });
+        }
+
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.classList.add('active');
+        }
+
+        function copyToClipboard() {
+            const text = resultText.textContent;
+            if (text === '-') return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('copiedNotification');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+        function pasteFromClipboard() {
+            navigator.clipboard.read().then(items => {
+                for (let item of items) {
+                    if (item.types.includes('image/png') || item.types.includes('image/jpeg')) {
+                        item.getType('image/png').then(blob => {
+                            handleFile(new File([blob], 'pasted_image.png', { type: 'image/png' }));
+                        }).catch(() => {
+                            item.getType('image/jpeg').then(blob => {
+                                handleFile(new File([blob], 'pasted_image.jpg', { type: 'image/jpeg' }));
+                            }).catch(() => {
+                                showError('No image in clipboard');
+                            });
+                        });
+                        return;
+                    }
+                }
+                showError('No image data in clipboard');
+            }).catch(() => {
+                showError('Clipboard access denied');
+            });
+        }
+    </script>
+</body>
+</html>
+
