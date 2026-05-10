@@ -113,8 +113,20 @@ pip install -r requirements.txt
 
 # Dataset
 
-Проект поддерживает:
-- собственный synthetic dataset;
+Проект использует собственный synthetic text-line dataset.
+
+Dataset archive:
+
+```text
+gendata.zip
+```
+
+После установки зависимостей распакуйте dataset:
+
+```bash
+unzip gendata.zip
+```
+
 ---
 
 ## Генерация synthetic dataset
@@ -219,26 +231,26 @@ uvicorn app:app --reload
 
 ---
 
-# Docker
-
-## Build image
-
-```bash
-docker build -t crnn-ocr .
-```
-
----
-
 ## Run container
 
 ```bash
 docker run -p 8000:8000 crnn-ocr
 ```
 
-После запуска откройте:
+Open:
 
 ```text
 http://127.0.0.1:8000
+```
+
+---
+
+# Training Result
+
+Best validation loss:
+
+```text
+0.3296
 ```
 
 ---
