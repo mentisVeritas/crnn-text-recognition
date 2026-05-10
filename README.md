@@ -67,10 +67,21 @@ Predicted text
 
 ## 1. Клонирование
 
+Перед клонированием установите Git LFS:
+
 ```bash
-git clone <repository-url>
+git lfs install
+```
+
+После этого:
+
+```bash
+git clone https://github.com/mentisVeritas/crnn-text-recognition.git
 cd crnn-text-recognition
 ```
+
+Git LFS используется для:
+- dataset archive (`gendata.zip`)
 
 ---
 
@@ -103,23 +114,13 @@ pip install -r requirements.txt
 # Dataset
 
 Проект поддерживает:
-- MJSynth;
 - собственный synthetic dataset;
-- TextRecognitionDataGenerator.
-
 ---
 
 ## Генерация synthetic dataset
 
 ```bash
-python scripts/generate_gendata.py \
-  --count 100000 \
-  --mode dict \
-  --language en \
-  --words 5 \
-  --font-size 32 \
-  --distortion 2 \
-  --clean
+python scripts/generate_gendata.py
 ```
 
 Результат:
@@ -127,7 +128,6 @@ python scripts/generate_gendata.py \
 ```text
 data/processed/gendata/
 ├── images/
-├── labels.csv
 └── labels.txt
 ```
 
@@ -159,11 +159,16 @@ configs/config.yaml
 Пример:
 
 ```yaml
+images_dir: "data/processed/gendata/images"
+labels_path: "data/processed/gendata/labels.txt"
+alphabet: " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?;:-()[]{}<>\"'@#$%^&*_+=/\\|~`&"
 batch_size: 16
 lr: 0.001
-epochs: 30
+epochs: 33
 img_height: 48
 img_width: 768
+resume: true
+
 ```
 
 ---
@@ -174,6 +179,16 @@ img_width: 768
 
 ```bash
 python scripts/predict.py --image path/to/image.png
+```
+
+Example:
+
+```bash
+python scripts/predict.py --image ./data/processed/gendata/images/000004.jpg
+```
+```text
+INFO:root:Device: MPS (Apple Metal Performance Shaders)
+INFO:__main__:Predicted text: there growth result star artist fact contain dark. (confidence=98.4%)
 ```
 
 ---
@@ -218,6 +233,12 @@ docker build -t crnn-ocr .
 
 ```bash
 docker run -p 8000:8000 crnn-ocr
+```
+
+После запуска откройте:
+
+```text
+http://127.0.0.1:8000
 ```
 
 ---

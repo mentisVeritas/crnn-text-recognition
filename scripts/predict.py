@@ -8,10 +8,19 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from src.model import CRNN
-from src.inference import preprocess_image, decode_with_confidence
+
+
+from PIL import Image
+
+from src.inference import decode_with_confidence
+from src.data import build_image_transform
 from src.utils import load_config, get_device
 
 logger = logging.getLogger(__name__)
+
+
+
+
 
 
 def load_model(checkpoint_path, num_classes, device):
@@ -50,7 +59,10 @@ def main():
         if not os.path.exists(args.image):
             logger.error("Image file not found.")
             return
-        image_tensor = preprocess_image(args.image, config["img_height"])
+        image = Image.open(args.image).convert("RGB")
+        transform = build_image_transform(config["img_height"])
+        image_tensor = transform(image).unsqueeze(0).to(device)
+
         predicted_text, conf = decode_with_confidence(model, image_tensor, config["alphabet"], device)
         logger.info(f"Predicted text: {predicted_text} (confidence={conf * 100:.1f}%)")
     else:
@@ -69,7 +81,10 @@ def main():
             return
         for img_file in image_files:
             img_path = os.path.join(images_dir, img_file)
-            image_tensor = preprocess_image(img_path, config["img_height"])
+            image = Image.open(img_path).convert("RGB")
+            transform = build_image_transform(config["img_height"])
+            image_tensor = transform(image).unsqueeze(0).to(device)
+
             predicted_text, conf = decode_with_confidence(model, image_tensor, config["alphabet"], device)
             logger.info(f"{img_file}: {predicted_text} (confidence={conf * 100:.1f}%)")
 

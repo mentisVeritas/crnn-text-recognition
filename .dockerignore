@@ -4,4 +4,6 @@ __pycache__
 *.pyc
 .git
 
-data/
+data
+gendata.zip
+notebooks/
