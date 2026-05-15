@@ -4,6 +4,7 @@ __pycache__
 *.pyc
 .git
 
-data
 gendata.zip
 notebooks/
+data/
+outputs/logs/

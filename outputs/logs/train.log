@@ -314,3 +314,17 @@
 2026-05-10 15:09:26,682 | INFO | src.train | Saved BEST model -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/checkpoints/best_model.pth
 2026-05-10 15:09:26,761 | INFO | src.train | Best val loss: 0.3240
 2026-05-10 15:09:27,054 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).
+2026-05-11 11:40:37,726 | INFO | src.utils | File logging (append) -> /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/outputs/logs/train.log
+2026-05-11 11:40:37,738 | INFO | root | Device: MPS (Apple Metal Performance Shaders)
+2026-05-11 11:40:37,738 | INFO | src.train | Images: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/images
+2026-05-11 11:40:37,738 | INFO | src.train | Labels: /Users/user/PycharmProjects/Learning/MLC/projects/crnn-text-recognition/data/processed/gendata/labels.txt
+2026-05-11 11:40:37,864 | INFO | src.data | Dataset loaded with 100000 samples
+2026-05-11 11:40:37,869 | INFO | src.train | Dataset size: 100000
+2026-05-11 11:40:37,905 | INFO | src.train | Model parameters: 1,971,553
+2026-05-11 11:40:38,117 | INFO | src.train | Model time steps (T): 191
+2026-05-11 11:40:38,117 | INFO | src.train | Samples with label length > T: 0/100000
+2026-05-11 11:40:38,117 | INFO | src.train | Resume checkpoints: True
+2026-05-11 11:40:38,153 | INFO | src.train | Resumed from checkpoint; best_val_loss=0.3240; next loop epoch index=33 (epochs in config=33)
+2026-05-11 11:40:38,156 | WARNING | src.train | No training steps will run (next epoch index 33 >= epochs=33). Raise epochs or use resume with a younger checkpoint.
+2026-05-11 11:40:38,157 | INFO | src.train | Best val loss: 0.3240
+2026-05-11 11:40:38,159 | INFO | __main__ | Done. Weights: outputs/checkpoints/checkpoint.pth (last epoch) and best_model.pth (best val).
